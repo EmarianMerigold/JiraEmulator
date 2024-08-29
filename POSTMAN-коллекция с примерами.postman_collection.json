@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "d0204d37-cc1f-4d06-bcce-1254b47b2429",
+		"name": "REQUESTS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20339515"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n       \r\n       \"project\": {\"key\": \"TEST\"},\r\n\r\n       \"summary\": \"Задача для теста\",\r\n       \r\n       \"description\": \"Задача, созданная через JMeter\",\r\n       \r\n       \"issuetype\": {\"name\": \"Ошибка\"},\r\n       \r\n       \"priority\": {\"name\": \"Highest\"}\r\n    }\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/rest/api/2/issue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/rest/api/2/issue/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"description\": \"Задача, созданная через JMeter\",\r\n\"issuetype\": {\"name\": \"Задача\"},\r\n\"priority\": {\"name\": \"High\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/rest/api/2/issue/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/rest/api/2/issue/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -66,11 +66,4 @@ public class FieldsDTO {
         this.priority = priority;
     }
 
-    public List<String> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
-    }
 }
