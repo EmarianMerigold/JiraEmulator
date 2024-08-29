@@ -1,6 +1,7 @@
 package Konstantin_Dyachenko.Konstantin_Dyachenko.Controller;
 
 
+import Konstantin_Dyachenko.Konstantin_Dyachenko.DTO.FieldsDTO;
 import Konstantin_Dyachenko.Konstantin_Dyachenko.DTO.IssueRequestDTO;
 import Konstantin_Dyachenko.Konstantin_Dyachenko.DTO.IssueUpdateDTO;
 import Konstantin_Dyachenko.Konstantin_Dyachenko.Model.Issue;
@@ -20,13 +21,15 @@ public class JiraController {
     @PostMapping(value = "/rest/api/2/issue",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Issue> createIssue(@Valid @RequestBody Issue issueRequest) {
+    public ResponseEntity<Issue> createIssue(@Valid @RequestBody IssueRequestDTO issueRequestDTO) {
+
+
 
         //String responseBody = "{ \"id\" : \"%s\"}";
         //String taskId = "1234";
        // responseBody = String.format(responseBody, taskId);
 
-        Issue createdIssue = issueRepository.save(issueRequest);
+        Issue createdIssue = issueRepository.save(issue);
         return new ResponseEntity<>(createdIssue, HttpStatus.CREATED);
     }
 
