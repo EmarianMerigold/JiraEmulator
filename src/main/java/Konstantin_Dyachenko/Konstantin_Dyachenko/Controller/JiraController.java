@@ -20,7 +20,6 @@ public class JiraController {
 
         String responseBody = "{ \"id\" : \"%s\"}";
         String taskId = "1234";
-
         responseBody = String.format(responseBody, taskId);
 
         return new ResponseEntity<>(responseBody,HttpStatus.CREATED);
