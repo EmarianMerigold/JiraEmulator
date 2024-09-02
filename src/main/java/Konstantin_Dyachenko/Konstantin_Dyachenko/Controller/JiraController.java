@@ -15,13 +15,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @RestController
 public class JiraController {
 
-    // Хранилище для запросов
-    private final Map<String, IssueRequestDTO> issueStore = new HashMap<>();
+    // Хранилище для запросов. Интегрирована утилита ConcurrentHashMap для осуществления многопоточности
+    private static final Map<String, IssueRequestDTO> issueStore = new ConcurrentHashMap<>();
     private final SecureRandom random = new SecureRandom();
 
     @PostMapping(value = "/rest/api/2/issue",
@@ -109,7 +110,7 @@ public class JiraController {
     public ResponseEntity<Map<String, String>> deleteIssue(@PathVariable String id) {
 
         if (!issueStore.containsKey(id)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         // Удаляем задачу из хранилища
