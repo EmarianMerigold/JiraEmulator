@@ -101,7 +101,7 @@ public class JiraController {
         responseBody.put("id", id);
         responseBody.put("fields", existingFields);
 
-        return new ResponseEntity<>(responseBody, HttpStatus.OK);
+        return new ResponseEntity<>(responseBody, HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping(value = "/rest/api/2/issue/{id}",
@@ -110,7 +110,7 @@ public class JiraController {
     public ResponseEntity<Map<String, String>> deleteIssue(@PathVariable String id) {
 
         if (!issueStore.containsKey(id)) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         // Удаляем задачу из хранилища
